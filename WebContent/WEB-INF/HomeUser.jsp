@@ -66,6 +66,42 @@
 		</div>
 -->	
 	<br/>
+	<h6>Personal List</h6>
+	<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>
+					Action
+					</th>
+					<th>
+						Farm Name
+					</th>
+					<th>
+						Description
+					</th>
+					<th>
+						Eggs Available
+					</th>
+					<th>
+						Action
+					</th>
+				</tr> 
+			</thead>
+			<c:forEach items="${Farms}" var="farm">
+				<tr>
+					<td><a class="btn btn-danger" herf = "./Follow">Unfollow</a></td>
+				<!-- Link to farm will go here. -->
+					<td><a href="">${farm.farmName}</a></td>
+					<td>${farm.description}</td>
+					<td>${farm.inventory}</td>
+					<td><a class="btn btn-primary btn-sm" href = './Express Checkout'>Express Checkout</a></td>
+					
+				</tr>
+				
+			</c:forEach>
+	</table>
+	
+	<h6>Main Store</h6>
 	<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>

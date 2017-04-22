@@ -17,12 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
  
-@WebServlet("/Home")
-public class Home extends HttpServlet {
+@WebServlet("/HomeUser")
+public class HomeUser extends HttpServlet {
     private static final long serialVersionUID = 1L;
         
  
-    public Home() {
+    public HomeUser() {
         super();
     }
  
@@ -42,7 +42,7 @@ public class Home extends HttpServlet {
      
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
            List<Farm> Farms = new ArrayList<Farm>();
- 
+
             Connection d = null;
           
             try
@@ -55,15 +55,17 @@ public class Home extends HttpServlet {
                 d = DriverManager.getConnection( url, username, password );
                  
                 Statement stmt = d.createStatement();
-                ResultSet rs = stmt.executeQuery( "SELECT * FROM FarmName" );
+                ResultSet rs = stmt.executeQuery( "SELECT * FROM FarmName");
  
                 while( rs.next() )
                 {
                      
-                    Farm farm = new Farm (rs.getInt( "farmId" ), rs.getString( "farmName" ), rs.getString("description"), rs.getInt("inventory"));
+                    Farm farm = new Farm (rs.getInt( "farmId" ), rs.getString( "farmName" ), rs.getString("description"), rs.getInt
+                    		("inventory"));
                     Farms.add( farm );
                 }
-                                     
+                
+                 d.close();              
             }
             catch( SQLException e )
             {
@@ -83,7 +85,7 @@ public class Home extends HttpServlet {
              
              
             request.setAttribute( "Farms", Farms );
-            request.getRequestDispatcher( "/WEB-INF/Home.jsp" ).forward(request, response );
+            request.getRequestDispatcher( "/WEB-INF/HomeUser.jsp" ).forward(request, response );
  
     }
  

@@ -60,22 +60,22 @@
 	
 	<br>
 	<div class = 'block'>
-		<form class="form-horizontal">
+		<form class="form-horizontal" action = "Login" method = "post">
 		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">Email:</label>
+		    <label  class="col-sm-2 control-label">Username:</label>
 		    <div class="col-sm-10">
-		      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+		      <input type="username" class="form-control"  placeholder="username">
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="inputPassword3" class="col-sm-2 control-label">Password:</label>
+		    <label class="col-sm-2 control-label">Password:</label>
 		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+		      <input type="password" class="form-control"  placeholder="Password">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">Sign in</button>
+		      <button type="submit" class="btn btn-default">Login</button>
 		    </div>
 		  </div>
 		</form>

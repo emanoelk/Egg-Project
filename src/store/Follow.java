@@ -1,20 +1,20 @@
 package store;
  
-public class Farm {
+public class Follow {
  
     int id;
     String farmName;
     String description;
-    int inventory;
+    int user_Id;
      
-    public Farm (){}
+    public Follow (){}
      
-    public Farm (int id, String farmName, String description, int inventory){
+    public Follow (int id, String farmName, String description, int user_Id){
         super();
         this.farmName = farmName;
         this.description = description;
         this.id = id;
-        this.inventory = inventory;
+        this.user_Id = user_Id;
     }
  
     public int getId() {
@@ -37,14 +37,12 @@ public class Farm {
         this.description = description;
     }
 
-	public int getInventory() {
-		return inventory;
+	public int getUser_Id() {
+		return user_Id;
 	}
 
-	public void setInventory(int inventory) {
-		this.inventory = inventory;
+	public void setUser_Id(int user_Id) {
+		this.user_Id = user_Id;
 	}
     
-    
- 
 }
