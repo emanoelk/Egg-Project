@@ -1,4 +1,4 @@
-package Store;
+package store;
  
 import java.io.IOException;
 import java.sql.Connection;
