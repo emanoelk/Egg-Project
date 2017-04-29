@@ -4,16 +4,16 @@ public class Follow {
  
     int id;
     String farmName;
-    String description;
     int user_Id;
+    String descriptin;
      
     public Follow (){}
      
-    public Follow (int id, String farmName, String description, int user_Id){
+    public Follow (int id, String farmName, String descriptin, int user_Id){
         super();
         this.farmName = farmName;
-        this.description = description;
         this.id = id;
+        this.descriptin = descriptin;	
         this.user_Id = user_Id;
     }
  
@@ -28,14 +28,14 @@ public class Follow {
     public void setFarmName(String farmName) {
         this.farmName = farmName;
     }
-     
-    public String getDescription(){
-        return description;
-    }
- 
-    public void setDescription(String description){
-        this.description = description;
-    }
+    
+	public String getDescriptin() {
+		return descriptin;
+	}
+
+	public void setDescriptin(String descriptin) {
+		this.descriptin = descriptin;
+	}
 
 	public int getUser_Id() {
 		return user_Id;

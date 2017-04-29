@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/SignUp")
-public class SignUp extends HttpServlet {
+@WebServlet("/Logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SignUp() {
+    public Logout() {
         super();
     }
 
@@ -20,7 +20,10 @@ public class SignUp extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher( "/WEB-INF/SignUp.jsp" ).forward(request, response );
+
+		request.getSession().invalidate();
+        response.sendRedirect( "Home" );
+		
 	}
 
 }

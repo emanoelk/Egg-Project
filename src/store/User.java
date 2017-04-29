@@ -5,14 +5,16 @@ public class User {
     int user_id;
     String userName;
     String password;
+    String type;
      
     public User (){}
      
-    public User (int user_id, String userName, String password){
+    public User (int user_id, String userName, String password, String type){
         super();
         this.userName = userName;
         this.password = password;
         this.user_id = user_id;
+        this.type = type;
     }
  
 	public int getUser_id() {
@@ -34,7 +36,16 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
  
+	
    
  
 }

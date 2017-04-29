@@ -40,12 +40,12 @@
 			
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>
-		</div>
-		<div class = 'tab'>
-		<a class="btn btn-default" href="./Home" >Home</a>
+	</div>
+	<div class = 'tab'>
+		<a class="btn btn-default" href="./HomeUser" >Home</a>
 		<a  class="btn btn-default" href="./Cart" >Cart</a>
-		<a  class="btn btn-default" href="./Login" >Login</a>
-		<a  class="btn btn-default" href="./SignUp" >Sign Up</a>
+		<a  class="btn btn-default" href="./Account" >Account</a>
+		<a  class="btn btn-default" href="./Logout" >Log Out</a>
 		</div>		
 	</div>
 
@@ -55,52 +55,16 @@
 				Eggs in a Zap
 			</h1>
 		</div>
-<!--		<div>			
-		<form class="form-inline" action="Inventory" method="post"> 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder = "Something" name="search">
-			</div>
-			
-			<button type="submit" class="btn btn-default">Search</button>
-		</form>
-		</div>
--->	
+
 	<br/>
-	<table class="table table-bordered table-striped table-hover">
-			<thead>
-				<tr>
-					<th>
-						Action
-					</th>
-					<th>
-						Farm Name
-					</th>
-					<th>
-						Description
-					</th>
-					<th>
-						Eggs Available
-					</th>
-					<th>
-						Adding to Cart
-					</th>
-					
-				</tr> 
-			</thead>
-			<c:forEach items="${Farms}" var="farm">
-				<tr>
-					<td><a class="btn btn-success" href = "./Follow">Follow</a>
-				<!-- Link to farm will go here. -->
-					<td><a href="">${farm.farmName}</a></td>
-					<td>${farm.description}</td>
-					<td>${farm.inventory}</td>
-					<td>&nbsp; <a href = './AddCart' class = 'btn btn-danger'>Add Cart</a></td></td>
-					
-				</tr>
+		
+	<c:forEach items = "${Farms}" var="farm">
+		<h3 style = "display: inline-block;">Welcome ${farm.farmName}</h3>	
+		<a style = "display: inline-block;" type="button" class="btn btn-warning" href= "./Edit?seller_Id=${seller_Id}"><h4>Edit</h4></a>
+					<h1>${farm.description}</h1>
+					<h1>${farm.inventory}</h1>
 			</c:forEach>
-	</table>
-
-
+	
 	</div>
 </body>
 </html>

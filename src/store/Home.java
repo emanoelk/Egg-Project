@@ -60,7 +60,7 @@ public class Home extends HttpServlet {
                 while( rs.next() )
                 {
                      
-                    Farm farm = new Farm (rs.getInt( "farmId" ), rs.getString( "farmName" ), rs.getString("description"), rs.getInt("inventory"));
+                    Farm farm = new Farm (rs.getInt( "farmId" ), rs.getString( "farmName" ), rs.getString("description"), rs.getInt("inventory"), rs.getInt("Farmer_Id"));
                     Farms.add( farm );
                 }
                                      

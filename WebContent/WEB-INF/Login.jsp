@@ -59,18 +59,20 @@
 	</div>
 	
 	<br>
+	
+	
 	<div class = 'block'>
 		<form class="form-horizontal" action = "Login" method = "post">
 		  <div class="form-group">
 		    <label  class="col-sm-2 control-label">Username:</label>
 		    <div class="col-sm-10">
-		      <input type="username" class="form-control"  placeholder="username">
+		      <input type="username" class="form-control"  placeholder="username" name = 'username'>
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label class="col-sm-2 control-label">Password:</label>
 		    <div class="col-sm-10">
-		      <input type="password" class="form-control"  placeholder="Password">
+		      <input type="password" class="form-control"  placeholder="Password" name = 'password'>
 		    </div>
 		  </div>
 		  <div class="form-group">

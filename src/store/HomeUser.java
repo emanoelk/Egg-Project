@@ -8,7 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
- 
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  
 @WebServlet("/HomeUser")
 public class HomeUser extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-        
+    private static final long serialVersionUID = 1L;        
  
     public HomeUser() {
         super();
@@ -41,9 +41,16 @@ public class HomeUser extends HttpServlet {
     }
      
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-           List<Farm> Farms = new ArrayList<Farm>();
+    	List<Farm> Farms = new ArrayList<Farm>();
+        List<Follow> Follow = new ArrayList<Follow>();
 
-            Connection d = null;
+        Object buyer_Id =  (Object) (request.getSession().getAttribute("buyer_Id"));
+		
+    		if(buyer_Id == (null)){
+			  response.sendRedirect( "./Login" );
+	            return;
+				}
+           Connection d = null;
           
             try
             {
@@ -56,16 +63,33 @@ public class HomeUser extends HttpServlet {
                  
                 Statement stmt = d.createStatement();
                 ResultSet rs = stmt.executeQuery( "SELECT * FROM FarmName");
- 
+                
                 while( rs.next() )
                 {
                      
-                    Farm farm = new Farm (rs.getInt( "farmId" ), rs.getString( "farmName" ), rs.getString("description"), rs.getInt
-                    		("inventory"));
-                    Farms.add( farm );
-                }
+                    Farm farms = new Farm (rs.getInt( "farmId" ), rs.getString( "farmName" ), rs.getString("description"), rs.getInt
+                    		("inventory"), rs.getInt("Farmer_Id"));
+                    Farms.add( farms );
+                }              
                 
-                 d.close();              
+                ResultSet rs2 = stmt.executeQuery( "SELECT * FROM Follow where user_Id = "+ buyer_Id);
+
+                while( rs2.next() )
+                {
+                     
+                    Follow farms = new Follow (rs2.getInt( "id" ), rs2.getString( "farmName" ), rs2.getString
+                    		("descriptin"), rs2.getInt("user_Id"));
+                    
+                    List<Object> toRemove = new ArrayList<Object>();
+                    for(Farm a: Farms){
+                        if(farms.getfarmName().equals(a.getfarmName())){
+                            toRemove.add(a);	                    
+                        }
+                    }
+                    Farms.removeAll(toRemove);
+                    	Follow.add( farms );
+                }
+            
             }
             catch( SQLException e )
             {
@@ -82,11 +106,12 @@ public class HomeUser extends HttpServlet {
                     throw new ServletException( e );
                 }
             }
-             
-             
-            request.setAttribute( "Farms", Farms );
+
+            request.setAttribute( "Follow", Follow ); 
+            request.setAttribute("Farm", Farms);
+            request.setAttribute("buyer_Id", buyer_Id);
             request.getRequestDispatcher( "/WEB-INF/HomeUser.jsp" ).forward(request, response );
- 
+
     }
  
      

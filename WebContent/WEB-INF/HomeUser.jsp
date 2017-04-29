@@ -45,7 +45,7 @@
 		<a class="btn btn-default" href="./HomeUser" >Home</a>
 		<a  class="btn btn-default" href="./Cart" >Cart</a>
 		<a  class="btn btn-default" href="./Account" >Account</a>
-		<a  class="btn btn-default" href="./Log Out" >Log Out</a>
+		<a  class="btn btn-default" href="./Logout" >Log Out</a>
 		</div>		
 	</div>
 
@@ -55,83 +55,56 @@
 				Eggs in a Zap
 			</h1>
 		</div>
-<!--		<div>			
-		<form class="form-inline" action="Inventory" method="post"> 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder = "Something" name="search">
-			</div>
-			
-			<button type="submit" class="btn btn-default">Search</button>
-		</form>
-		</div>
--->	
+
 	<br/>
 	<h6>Personal List</h6>
 	<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>
-					Action
-					</th>
-					<th>
-						Farm Name
-					</th>
-					<th>
-						Description
-					</th>
-					<th>
-						Eggs Available
-					</th>
-					<th>
-						Action
-					</th>
+					<th>Action</th>
+					<th>Farm Name</th>
+					<th>Description</th>
+					<th>Action</th>
 				</tr> 
 			</thead>
-			<c:forEach items="${Farms}" var="farm">
-				<tr>
-					<td><a class="btn btn-danger" herf = "./Follow">Unfollow</a></td>
-				<!-- Link to farm will go here. -->
-					<td><a href="">${farm.farmName}</a></td>
-					<td>${farm.description}</td>
-					<td>${farm.inventory}</td>
-					<td><a class="btn btn-primary btn-sm" href = './Express Checkout'>Express Checkout</a></td>
-					
-				</tr>
-				
+			<c:forEach items="${Follow}" var="follow">
+						<tr>
+							<td><a class="btn btn-danger" href ="./Unfollow?id=${follow.id}">Unfollow</a></td>
+						<!-- Link to farm will go here. -->
+							<td><a href="">${follow.farmName}</a></td>
+							<td>${follow.descriptin}</td>
+						
+							<td><a class="btn btn-primary btn-sm" href = './AddCart'>Add Cart</a></td>					
+						</tr>
 			</c:forEach>
 	</table>
+	
+	<c:if test="${empty Follow}">
+			<div class="well">
+				<h3 class="text-center">You are not following any farms at the moment.</h3>
+			</div>
+	</c:if>
 	
 	<h6>Main Store</h6>
 	<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>
-						Action
-					</th>
-					<th>
-						Farm Name
-					</th>
-					<th>
-						Description
-					</th>
-					<th>
-						Eggs Available
-					</th>
-					<th>
-						Adding to Cart
-					</th>
+					<th>Action</th>
+					<th>Farm Name</th>
+					<th>Description</th>
+					<th>Eggs Available</th>
+					<th>Adding to Cart</th>
 					
 				</tr> 
 			</thead>
-			<c:forEach items="${Farms}" var="farm">
+			<c:forEach items = "${Farm}" var="farm">				
 				<tr>
-					<td><a class="btn btn-success" href = "./Follow">Follow</a>
+					<td><a class="btn btn-success" href = "./Follower?buyer_id=${buyer_Id }&id=${farm.id}" >Follow</a>
 				<!-- Link to farm will go here. -->
 					<td><a href="">${farm.farmName}</a></td>
 					<td>${farm.description}</td>
 					<td>${farm.inventory}</td>
-					<td>&nbsp; <a href = './AddCart' class = 'btn btn-danger'>Add Cart</a></td></td>
-					
+					<td>&nbsp; <a href = './AddCart' class = 'btn btn-danger'>Add Cart</a></td></td>					
 				</tr>
 			</c:forEach>
 	</table>
