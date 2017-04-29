@@ -1,4 +1,4 @@
-package store;
+package Store;
  
 public class User {
  

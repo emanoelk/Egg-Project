@@ -43,7 +43,7 @@
 		</div>
 		<div class = 'tab'>
 		<a class="btn btn-default" href="./HomeUser" >Home</a>
-		<a  class="btn btn-default" href="./Cart" >Cart</a>
+		<a  class="btn btn-default" href="./EggCart" >Cart</a>
 		<a  class="btn btn-default" href="./Account" >Account</a>
 		<a  class="btn btn-default" href="./Logout" >Log Out</a>
 		</div>		
@@ -71,7 +71,9 @@
 						<tr>
 							<td><a class="btn btn-danger" href ="./Unfollow?id=${follow.id}">Unfollow</a></td>
 						<!-- Link to farm will go here. -->
-							<td><a href="">${follow.farmName}</a></td>
+							<td><c:url value="FarmInventory" var="details">
+									<c:param name="id" value="${follow.id}" />
+								</c:url> <a href="${details}">${follow.farmName}</a></td>
 							<td>${follow.descriptin}</td>
 						
 							<td><a class="btn btn-primary btn-sm" href = './AddCart'>Add Cart</a></td>					
@@ -101,7 +103,9 @@
 				<tr>
 					<td><a class="btn btn-success" href = "./Follower?buyer_id=${buyer_Id }&id=${farm.id}" >Follow</a>
 				<!-- Link to farm will go here. -->
-					<td><a href="">${farm.farmName}</a></td>
+					<td><c:url value="FarmInventory" var="details">
+									<c:param name="id" value="${farm.id}" />
+								</c:url> <a href="${details}">${farm.farmName}</a></td>
 					<td>${farm.description}</td>
 					<td>${farm.inventory}</td>
 					<td>&nbsp; <a href = './AddCart' class = 'btn btn-danger'>Add Cart</a></td></td>					
