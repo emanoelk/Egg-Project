@@ -78,7 +78,7 @@ public class HomeUser extends HttpServlet {
                 {
                      
                     Follow farms = new Follow (rs2.getInt( "id" ), rs2.getString( "farmName" ), rs2.getString
-                    		("descriptin"), rs2.getInt("user_Id"));
+                    		("description"), rs2.getInt("user_Id"));
                     
                     List<Object> toRemove = new ArrayList<Object>();
                     for(Farm a: Farms){

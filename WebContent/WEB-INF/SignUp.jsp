@@ -52,7 +52,7 @@
 		</div>
 		<div class = 'tab'>
 		<a class="btn btn-default" href="./Home" role="button">Home</a>
-		<a  class="btn btn-default" href="./Cart" role="button">Cart</a>
+		<a  class="btn btn-default" href="./EggCart" role="button">Cart</a>
 		<a  class="btn btn-default" href="./Login" role="button">Login</a>
 		<a  class="btn btn-default" href="./SignUp" role="button">Sign Up</a>
 		</div>		

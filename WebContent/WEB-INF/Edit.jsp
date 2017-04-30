@@ -42,7 +42,7 @@
 		</div>
 		<div class = 'tab'>
 			<a class="btn btn-default" href="./HomeUser" >Home</a>
-			<a  class="btn btn-default" href="./Cart" >Cart</a>
+			<a  class="btn btn-default" href="./EggCart" >Cart</a>
 			<a  class="btn btn-default" href="./Account" >Account</a>
 			<a  class="btn btn-default" href="./Logout" >Log Out</a>
 		</div>		

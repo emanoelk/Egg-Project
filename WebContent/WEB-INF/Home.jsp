@@ -43,7 +43,7 @@
 		</div>
 		<div class = 'tab'>
 		<a class="btn btn-default" href="./Home" >Home</a>
-		<a  class="btn btn-default" href="./Cart" >Cart</a>
+		<a  class="btn btn-default" href="./EggCart" >Cart</a>
 		<a  class="btn btn-default" href="./Login" >Login</a>
 		<a  class="btn btn-default" href="./SignUp" >Sign Up</a>
 		</div>		
@@ -91,7 +91,9 @@
 				<tr>
 					<td><a class="btn btn-success" href = "./Follow">Follow</a>
 				<!-- Link to farm will go here. -->
-					<td><a href="">${farm.farmName}</a></td>
+					<td><c:url value="FarmInventory" var="details">
+									<c:param name="id" value="${farm.id}" />
+								</c:url> <a href="${details}">${farm.farmName}</a></td>
 					<td>${farm.description}</td>
 					<td>${farm.inventory}</td>
 					<td>&nbsp; <a href = './AddCart' class = 'btn btn-danger'>Add Cart</a></td></td>

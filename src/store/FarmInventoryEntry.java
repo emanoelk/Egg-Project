@@ -1,29 +1,25 @@
 package store;
- 
-public class Farm {
-	 
+
+public class FarmInventoryEntry {
+
     int id;
     String farmName;
     String description;
-    int inventory;
-    int Farmer_Id;
      
-    public Farm (){}
+    public FarmInventoryEntry (){}
      
-    public Farm (int id, String farmName, String description, int inventory, int Farmer_Id){
+    public FarmInventoryEntry (int id, String farmName, String description){
         super();
         this.farmName = farmName;
         this.description = description;
         this.id = id;
-        this.inventory = inventory;
-        this.Farmer_Id = Farmer_Id;
     }
  
     public int getId() {
         return id;
     }
  
-    public String getfarmName() {
+    public String getFarmName() {
         return farmName;
     }
  
@@ -38,23 +34,5 @@ public class Farm {
     public void setDescription(String description){
         this.description = description;
     }
-
-	public int getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(int inventory) {
-		this.inventory = inventory;
-	}
-
-	public int getFarmer_Id() {
-		return Farmer_Id;
-	}
-
-	public void setFarmer_Id(int Farmer_Id) {
-		this.Farmer_Id = Farmer_Id;
-	}
-    
-    
  
 }
