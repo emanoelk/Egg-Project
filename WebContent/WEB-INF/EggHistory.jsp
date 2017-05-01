@@ -22,7 +22,7 @@
 			</h2>
 		</div>
 
-		<c:if test="${empty eggHistory}">
+		<c:if test="${empty eggHistory && empty eggbuyer}">
 			<div class="jumbotron">
 				<h1>
 					<small>There are no items to display.</small>
@@ -30,13 +30,12 @@
 			</div>
 		</c:if>
 
-		<c:if test="${not empty eggHistory}">
+		<c:if test="${not empty eggHistory }">
 			<table class="table table-hover table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Email</th>
-						<th>Item Name</th>
 						<th>Quantity</th>
 						<th>Price</th>
 					</tr>
@@ -46,6 +45,24 @@
 						<tr>
 							<td>${item.name}</td>
 							<td>${item.email}</td>
+							<td>${item.quantity}</td>
+							<td>${item.price}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</c:if><c:if test="${not empty eggbuyer }">
+			<table class="table table-hover table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Item Name</th>
+						<th>Quantity</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${eggbuyer}" var="item">
+						<tr>
 							<td>${item.farm}</td>
 							<td>${item.quantity}</td>
 							<td>${item.price}</td>
@@ -54,6 +71,7 @@
 				</tbody>
 			</table>
 		</c:if>
+		${type}${id}
 		</div>
 </body>
 </html>

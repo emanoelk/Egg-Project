@@ -28,67 +28,93 @@
 		margin-right: 50px;
 		}
 		
-	</style>
+</style>
 </head>
 <body>
-<div class = 'bar'>
-		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
-		<div class = 'tab'>
-		<form class="form-inline" action="Inventory" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder = "Something" name="search">
+
+<c:choose>
+	<c:when test = "${buyer_Id == null }">
+		<div class = 'bar'>
+			<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
+			<div class = 'tab'>
+			<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder = "Something" name="search">
+				</div>
+				
+				<button type="submit" class="btn btn-default">Search</button>
+			</form>
 			</div>
-			
-			<button type="submit" class="btn btn-default">Search</button>
-		</form>
+			<div class = 'tab'>
+			<a class="btn btn-default" href="./Home" role="button">Home</a>
+			<a  class="btn btn-default" href="./EggCart" role="button">Cart</a>
+			<a  class="btn btn-default" href="./Login" role="button">Login</a>
+			<a  class="btn btn-default" href="./SignUp" role="button">Sign Up</a>
+			</div>		
 		</div>
-		<div class = 'tab'>
-		<a class="btn btn-default" href="./Home" role="button">Home</a>
-		<a  class="btn btn-default" href="./EggCart" role="button">Cart</a>
-		<a  class="btn btn-default" href="./Login" role="button">Login</a>
-		<a  class="btn btn-default" href="./SignUp" role="button">Sign Up</a>
-		</div>		
-	</div>
+	</c:when>
+	<c:otherwise>
+		<div class = 'bar'>
+			<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
+			<div class = 'tab'>
+			<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder = "Something" name="search">
+				</div>
+				
+				<button type="submit" class="btn btn-default">Search</button>
+			</form>
+			</div>
+			<div class = 'tab'>
+			<a class="btn btn-default" href="./HomeUser" role="button">Home</a>
+			<a  class="btn btn-default" href="./EggCart" role="button">Cart</a>
+			<a  class="btn btn-default" href="./EggHistory" role="button">Egg History</a>
+			<a  class="btn btn-default" href="./Logout" role="button">Log Out</a>
+			</div>		
+		</div>
+	</c:otherwise>
+</c:choose>
+
+	<br>
+
 	<div class="container">
-
-		
-		<c:if test="${empty eggcart}">
-			<div class="jumbotron">
-				<h1>
-					 <small>There are no items in your cart to display.</small>
-				</h1>
-			</div>
-		</c:if>
-
-		<c:if test="${not empty eggcart}">
-			<table class="table table-hover table-striped table-bordered">
-				<thead>
-					<tr>
-						<th>Item</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Total Cost</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${eggcart}" var="egg">
+			<c:if test="${empty eggcart}">
+				<div class="jumbotron">
+					<h1>
+						 <small>There are no items in your cart to display.</small>
+					</h1>
+				</div>
+			</c:if>
+	
+			<c:if test="${not empty eggcart}">
+				<table class="table table-hover table-striped table-bordered">
+					<thead>
 						<tr>
-							<td>${egg.name}</td>
-							<td>${egg.price}</td>
-							<td>${egg.quantity}</td>
-							<td>${egg.itemcost}</td>
+							<th>Item</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Total Cost</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-				Total Cost: $
-				<tr>${totalCost}</tr>
-			</table>
-			<a class="btn btn-primary btn-xs" href="EggCheckout">Proceed to
-				Checkout</a>
-		</c:if>
-		</div>
+					</thead>
+					<tbody>
+						<c:forEach items="${eggcart}" var="egg">
+							<tr>
+								<td>${egg.name}</td>
+								<td>${egg.price}</td>
+								<td>${egg.quantity}</td>
+								<td>${egg.itemcost}</td>
+							</tr>
+						</c:forEach>
+					</tbody>				
+				</table>
+				<div>
+					<h5 style = "display: inline-block;">Total Cost: $</h5>
+					<h6 style = "display: inline-block;">${totalCost}</h6>
+				</div>
+				<br>
+				<a class="btn btn-primary btn-xs" href="EggCheckout">Proceed to Checkout</a>
+			</c:if>
+	</div>
+	
 </body>
 </html>
-			
-					
-	

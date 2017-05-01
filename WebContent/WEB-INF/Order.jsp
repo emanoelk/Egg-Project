@@ -19,7 +19,7 @@
 			<div class="jumbotron">
 				<h1>
 					Thank you for shopping with us. <br/>
-					<small>Your order id is: 12 </small>
+					<small>Your order id is:  ${orderID}</small>
 				</h1>
 			</div>
 	</div>

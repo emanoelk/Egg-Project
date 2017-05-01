@@ -33,18 +33,22 @@
 	<div class = 'bar'>
 		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
 		<div class = 'tab'>
-		<form class="form-inline" action="Inventory" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+		<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
 			<div class="form-group">
 				<input type="text" class="form-control" name="search">
 			</div>
 			
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>
+		
 		</div>
 		<div class = 'tab'>
 		<a class="btn btn-default" href="./HomeUser" >Home</a>
 		<a  class="btn btn-default" href="./EggCart" >Cart</a>
-		<a  class="btn btn-default" href="./Account" >Account</a>
+		<c:url value="EggHistory" var="Egg">
+									<c:param name="id" value="${buyer_Id}" />
+									<c:param name="type" value="buyer" />
+								</c:url> <a class="btn btn-default" href="${Egg}">History</a>
 		<a  class="btn btn-default" href="./Logout" >Log Out</a>
 		</div>		
 	</div>
@@ -76,7 +80,11 @@
 								</c:url> <a href="${details}">${follow.farmName}</a></td>
 							<td>${follow.descriptin}</td>
 						
-							<td><a class="btn btn-primary btn-sm" href = './AddCart'>Add Cart</a></td>					
+							<td><c:url value="AddCart" var="EggCart">
+									<c:param name="id" value="${follow.id}" />
+									<c:param name="quantity" value="1" />
+								</c:url> <a class = 'btn btn-danger' href="${EggCart}">Add
+									to Cart</a></td>					
 						</tr>
 			</c:forEach>
 	</table>
@@ -101,14 +109,18 @@
 			</thead>
 			<c:forEach items = "${Farm}" var="farm">				
 				<tr>
-					<td><a class="btn btn-success" href = "./Follower?buyer_id=${buyer_Id }&id=${farm.id}" >Follow</a>
+					<td><a class="btn btn-success" href = "./Follower?buyer_id=${buyer_Id }&id=${farm.farmId}" >Follow</a>
 				<!-- Link to farm will go here. -->
 					<td><c:url value="FarmInventory" var="details">
-									<c:param name="id" value="${farm.id}" />
+									<c:param name="id" value="${farm.farmId}" />
 								</c:url> <a href="${details}">${farm.farmName}</a></td>
 					<td>${farm.description}</td>
 					<td>${farm.inventory}</td>
-					<td>&nbsp; <a href = './AddCart' class = 'btn btn-danger'>Add Cart</a></td></td>					
+					<td>&nbsp; <c:url value="AddCart" var="EggCart">
+									<c:param name="id" value="${farm.farmId}" />
+									<c:param name="quantity" value="1" />
+								</c:url> <a class = 'btn btn-danger' href="${EggCart}">Add
+									to Cart</a></td>					
 				</tr>
 			</c:forEach>
 	</table>

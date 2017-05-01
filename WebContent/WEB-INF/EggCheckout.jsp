@@ -50,6 +50,12 @@
 							<c:if test="${not empty error}">
 								<p class="well-sm bg-danger">${error}</p>
 							</c:if>
+							<c:if test="${not empty buyer_Id}">
+								<input type="hidden" id="buyerid" name="buyerid" value="${buyer_Id}">
+							</c:if>
+							<c:if test="${empty buyer_Id}">
+								<input type="hidden" id="buyerid" name="buyerid" value="0">
+							</c:if>
 						</div>
 					</div>
 			<table class="table table-hover table-striped table-bordered">

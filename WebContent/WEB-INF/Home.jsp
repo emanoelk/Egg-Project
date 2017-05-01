@@ -33,7 +33,7 @@
 	<div class = 'bar'>
 		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
 		<div class = 'tab'>
-		<form class="form-inline" action="Inventory" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+		<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
 			<div class="form-group">
 				<input type="text" class="form-control" name="search">
 			</div>
@@ -92,11 +92,15 @@
 					<td><a class="btn btn-success" href = "./Follow">Follow</a>
 				<!-- Link to farm will go here. -->
 					<td><c:url value="FarmInventory" var="details">
-									<c:param name="id" value="${farm.id}" />
+									<c:param name="id" value="${farm.farmId}" />
 								</c:url> <a href="${details}">${farm.farmName}</a></td>
 					<td>${farm.description}</td>
 					<td>${farm.inventory}</td>
-					<td>&nbsp; <a href = './AddCart' class = 'btn btn-danger'>Add Cart</a></td></td>
+					<td>&nbsp; <c:url value="AddCart" var="EggCart">
+									<c:param name="id" value="${farm.farmId}" />
+									<c:param name="quantity" value="1" />
+								</c:url> <a class = 'btn btn-danger' href="${EggCart}">Add
+									to Cart</a></td>
 					
 				</tr>
 			</c:forEach>

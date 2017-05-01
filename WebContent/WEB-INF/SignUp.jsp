@@ -42,7 +42,7 @@
 	<div class = 'bar'>
 		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
 		<div class = 'tab'>
-		<form class="form-inline" action="Inventory" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+		<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder = "Something" name="search">
 			</div>

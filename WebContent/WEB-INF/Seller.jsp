@@ -33,23 +33,24 @@
 	<div class = 'bar'>
 		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
 		<div class = 'tab'>
-			<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
-				<div class="form-group">
-					<input type="text" class="form-control" name="search">
-				</div>			
-				<button type="submit" class="btn btn-default">Search</button>
-			</form>
-		</div>
-		<div class = 'tab'>
-			<a class="btn btn-default" href="./HomeUser" >Home</a>	
-			<<c:url value="EggHistory" var="Egg">
+		<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+			<div class="form-group">
+				<input type="text" class="form-control" name="search">
+			</div>
+			
+			<button type="submit" class="btn btn-default">Search</button>
+		</form>
+	</div>
+	<div class = 'tab'>
+		<a class="btn btn-default" href="./HomeUser" >Home</a>
+		<c:url value="EggHistory" var="Egg">
 									<c:param name="id" value="${seller_Id}" />
 									<c:param name="type" value="seller" />
-								</c:url> <a class="btn btn-default" href="${Egg}">History</a>History</a>
-			<a  class="btn btn-default" href="./Logout" >Log Out</a>
+								</c:url> <a class="btn btn-default" href="${Egg}">History</a>
+		<a  class="btn btn-default" href="./Logout" >Log Out</a>
 		</div>		
 	</div>
-	
+
 	<div class="container">
 		<div class="page-header">
 			<h1>
@@ -58,19 +59,13 @@
 		</div>
 
 	<br/>
-	
-	<form action="Edit" method="post">
-	
-		FarmName: <input type="text" name="farmName" value="${Farm.farmName}" placeholder= "${Farm.farmName}"/> <br />
 		
-		Description: <textarea name="description" placeholder= "${Farm.description}">${Farm.description}</textarea> <br />
-
-		Inventory: <textarea name="inventory" placeholder= "${Farm.inventory}">${Farm.inventory}</textarea> <br />
-
-		<input type="hidden" name="id" value="${Farm.farmer_Id}" />
-		
-		<input type="submit" name="save" value="Save" />
-	</form>
+	<c:forEach items = "${Farms}" var="farm">
+		<h3 style = "display: inline-block;">Welcome ${farm.farmName}</h3>	
+		<a style = "display: inline-block;" type="button" class="btn btn-warning" href= "./Edit?seller_Id=${seller_Id}"><h4>Edit</h4></a>
+					<h1>${farm.description}</h1>
+					<h1>${farm.inventory}</h1>
+			</c:forEach>
 	
 	</div>
 </body>

@@ -31,10 +31,14 @@
 	</style>
 </head>
 <body>
+
+<!-- Needs divider for buyer and non-buyer -->
+<c:choose>
+	<c:when test = "${buyer_Id == null}">
 	<div class = 'bar'>
 		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
 		<div class = 'tab'>
-		<form class="form-inline" action="Inventory" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+		<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder = "Something" name="search">
 			</div>
@@ -49,34 +53,59 @@
 		<a  class="btn btn-default" href="./SignUp" role="button">Sign Up</a>
 		</div>		
 	</div>
-
-	
 	
 	<br/>
-	<div class="container">
+	
+		<div class="container">
 
 		<!-- Page Header -->
 
 		</div>
-	
-	 
-	<div align = "center">
-	
-	<h1>
 
-${ requestScope.fname}
-
-</h1>
 	
+	</c:when>
 	
-	<div style=" width: 30%; float: left">
-	<h3>"farm picture here"</h3>
+	<c:otherwise>
+		<div class = 'bar'>
+		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
+		<div class = 'tab'>
+		<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder = "Something" name="search">
+			</div>
+			
+			<button type="submit" class="btn btn-default">Search</button>
+		</form>
+		</div>
+		<div class = 'tab'>
+		<a class="btn btn-default" href="./HomeUser" role="button">Home</a>
+		<a  class="btn btn-default" href="./EggCart" role="button">Cart</a>
+		<a  class="btn btn-default" href="./EggHistory" role="button">Egg History</a>
+		<a  class="btn btn-default" href="./Logout" role="button">Log Out</a>
+		</div>		
 	</div>
-	<div style= "width: 70%; float: right">
-	<h3>${ requestScope.fdesc}</h3>
-	<h4>${ requestScope.inv} Eggs in inventory at $ ${ requestScope.price} </h4>
-	 
-
+	
+	<br/>
+	
+		
+	
+	</c:otherwise>
+</c:choose>
+	
+	<div class="container">
+		 
+		<div align = "center">
+		
+		<h1>
+			${ requestScope.fname}
+		</h1>
+			
+		<div style=" width: 30%; float: left">
+		<h3>"farm picture here"</h3>
+		</div>
+		<div style= "width: 70%; float: right">
+		<h3>${ requestScope.fdesc}</h3>
+		<h4>${ requestScope.inv} Eggs in inventory at $ ${ requestScope.price} </h4>
 	
 		<c:url value="AddCart" var="EggCart">
 									<c:param name="id" value="${requestScope.fid}" />
@@ -86,10 +115,35 @@ ${ requestScope.fname}
 
 	
 		
-	</div>
-
-	</div>
-
+		</div>
+		  <a type="button" class="btn btn-primary btn-lg" href = "./livestream.jsp">Live Feed</a>
+	
+		</div>
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Buyer</th>
+						<th>Message</th>
+						
+					</tr> 
+				</thead>
+				<c:forEach items = "${Comment}" var="comments">				
+					<tr>
+						<td>${comments.userName}</td>
+						<td>${comments.message }</td>					
+					</tr>
+				</c:forEach>
+			</table>
+			
+			<c:if test = "${itWorks == true }">	
+				<form action = "AddComment" method = 'post'>
+					<textarea class="form-control" rows="3" name = 'message'></textarea>	
+					<input type="hidden" name="farmId" value=${requestScope.farmId }>		
+					<button type = 'submit' >Add Comment</button>
+				</form>
+			</c:if>
+		
+		</div>
 	
 </body>
 </html>
