@@ -8,103 +8,106 @@
 <title>EGZ</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
 	crossorigin="anonymous">
-	<style>
-		.tab{
-			display: inline-block;
-			padding: 10px;
-		
-		}
-		.options{
-		padding: 10pz
-		}
-		.bar{
-		border-bottom: solid;
-		border-width:1px;
-		margin-left: 50px;		
-		margin-right: 50px;
-		}
-		
-	</style>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+	integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+	integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+	integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+	crossorigin="anonymous"></script>
+
+<style>
+.tab {
+	display: inline-block;
+	padding: 10px;
+}
+
+.options {
+	padding: 10pz
+}
+
+.bar {
+	border-bottom: solid;
+	border-width: 1px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+</style>
 </head>
 <body>
-	<div class = 'bar'>
-		<h6 class = 'tab' style = "margin-left: -10px;">EGZ</h6>
-		<div class = 'tab'>
-		<form class="form-inline" action="Search" method="post" style = 'margin-left: 50px; margin-right: 50px;'> 
-			<div class="form-group">
-				<input type="text" class="form-control" name="search">
-			</div>
-			
-			<button type="submit" class="btn btn-default">Search</button>
-		</form>
+	<div class='bar'>
+		<h6 class='tab' style="margin-left: -10px;">EGZ</h6>
+		<div class='tab'>
+			<form class="form-inline" action="Search" method="post"
+				style='margin-left: 50px; margin-right: 50px;'>
+				<div class="form-group">
+					<input type="text" class="form-control" name="search">
+				</div>
+
+				<button type="submit" class="btn btn-default">Search</button>
+			</form>
 		</div>
-		<div class = 'tab'>
-		<a class="btn btn-default" href="./Home" >Home</a>
-		<a  class="btn btn-default" href="./EggCart" >Cart</a>
-		<a  class="btn btn-default" href="./Login" >Login</a>
-		<a  class="btn btn-default" href="./SignUp" >Sign Up</a>
-		</div>		
+		<div class='tab'>
+			<a class="btn btn-default" href="./Home">Home</a> <a
+				class="btn btn-default" href="./EggCart">Cart</a> <a
+				class="btn btn-default" href="./Login">Login</a> <a
+				class="btn btn-default" href="./SignUp">Sign Up</a>
+		</div>
 	</div>
 
 	<div class="container">
-		<div class="page-header">
-			<h1>
-				Eggs in a Zap
-			</h1>
+		<br />
+		<br />
+		<div>
+			<h1 align="left" class="page-header">Eggs in a Zap</h1>
 		</div>
-<!--		<div>			
-		<form class="form-inline" action="Inventory" method="post"> 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder = "Something" name="search">
-			</div>
-			
-			<button type="submit" class="btn btn-default">Search</button>
-		</form>
-		</div>
--->	
-	<br/>
-	<table class="table table-bordered table-striped table-hover">
+		<br />
+
+		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>
-						Action
-					</th>
-					<th>
-						Farm Name
-					</th>
-					<th>
-						Description
-					</th>
-					<th>
-						Eggs Available
-					</th>
-					<th>
-						Adding to Cart
-					</th>
-					
-				</tr> 
+					<th>Farms</th>
+					<th>&nbsp;</th>
+					<th>Eggs</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
 			</thead>
 			<c:forEach items="${Farms}" var="farm">
 				<tr>
-					<td><a class="btn btn-success" href = "./Follow">Follow</a>
-				<!-- Link to farm will go here. -->
 					<td><c:url value="FarmInventory" var="details">
-									<c:param name="id" value="${farm.farmId}" />
-								</c:url> <a href="${details}">${farm.farmName}</a></td>
+							<c:param name="id" value="${farm.farmId}" />
+						</c:url> <a href="${details}">${farm.farmName}</a></td>
 					<td>${farm.description}</td>
 					<td>${farm.inventory}</td>
-					<td>&nbsp; <c:url value="AddCart" var="EggCart">
-									<c:param name="id" value="${farm.farmId}" />
-									<c:param name="quantity" value="1" />
-								</c:url> <a class = 'btn btn-danger' href="${EggCart}">Add
-									to Cart</a></td>
-					
+					<td><c:url value="AddCart" var="EggCart">
+							<c:param name="id" value="${farm.farmId}" />
+							<c:param name="quantity" value="1" />
+						</c:url> <a class='btn btn-danger' href="${EggCart}">Add to Cart</a></td>
+					<td>
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">1</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="#">2</a>
+								<a class="dropdown-item" href="#">3</a>
+								<a class="dropdown-item" href="#">4</a>
+							</div>
+						</div>
+					</td>
+					<td><a class="btn btn-success" href="./Follow">Follow</a></td>
 				</tr>
 			</c:forEach>
-	</table>
+		</table>
 
 
 	</div>
